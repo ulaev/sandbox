@@ -7,7 +7,7 @@ const mapStateToProps = store => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    getForecast: params => dispatch(getForecast(params)),
+    createWorld: params => dispatch(createWorld(params)),
 });
 
 export default connect(

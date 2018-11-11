@@ -1,5 +1,4 @@
 import { connect } from 'react-redux';
-import { getForecast } from '../../../actions/YandexForecastActions';
 import HeadPanelPure from './HeadPanelPure';
 
 const mapStateToProps = store => ({
@@ -7,7 +6,6 @@ const mapStateToProps = store => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    getForecast: params => dispatch(getForecast(params)),
 });
 
 export default connect(

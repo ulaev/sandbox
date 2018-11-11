@@ -15,10 +15,9 @@ ReactDOM.render(
     <Router>
       <div>
         <HeadPanel />
-
         <Route path="/" exact component={WorldСhoice} />
         <Route path="/world/" component={World} />
-        <Route path="/admin/" component={AdminPanel} />
+        <Route path="/admin/" component={AdminPanel} /> 
       </div>
     </Router>
   </Provider>,

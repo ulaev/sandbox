@@ -1,12 +1,12 @@
 import React from "react";
-import { BrowserRouter as Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-import style from "./style.css";
+import style1 from "./style.css";
 
 class HeadPanelPure extends React.PureComponent {
   render() {
     return (
-      <div className={style.container}>
+      <div className={style1.container}>
         <ul>
           <li>
             <Link to="/">Выбор мира</Link>
