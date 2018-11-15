@@ -1,17 +1,17 @@
 {
-    "extends": "airbnb-base",
-    "plugins": [
-    ],
-    "rules": {
-      "strict": "off",
-      "indent": ["error", 4],
-      "semi": ["error", "always"],
-      "no-console": 0,
-      "linebreak-style": 0,
-      "no-plusplus":"off"
-    },
-    "env": {
-      "es6": true,
-      "browser": true
-    }
+  "extends": ["airbnb-base","eslint:all", "plugin:react/all"],
+  "plugins": ["react"],
+  "rules": {
+    "strict": "off",
+    "indent": ["error", 4],
+    "semi": ["error", "always"],
+    "no-console": 0,
+    "linebreak-style": 0,
+    "no-plusplus": "off",
+    "comma-dangle": "off"
+  },
+  "env": {
+    "es6": true,
+    "browser": true
   }
+}
