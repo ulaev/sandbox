@@ -1,28 +1,48 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import style from './style.css';
-import Sprite from '../../controls/sprite';
-import {Water1, Grass1, Water2, Coast4} from '../../../constants/sprites';
+import React from "react";
+import PropTypes from "prop-types";
+import style from "./style.css";
+import Sprite from "../../controls/sprite";
+import { Water1, Grass1, Water2, Coast1, Coast2, Coast3, Coast4, Coast5 } from "../../../constants/sprites";
 
 class WorldPure extends React.PureComponent {
-
   getSprite = id => {
-    
-  }
+    switch (id) {
+      case 1:
+        return Grass1;
+      case 2:
+        return Coast1;
+      case 3:
+        return Coast2;
+      case 4:
+        return Coast3;
+      case 5:
+        return Coast4;
+      case 6:
+        return Coast5;
+      case 7:
+        return Water1;
+    }
+  };
 
   render() {
-    console.log(this.props.mapLayers.map((item) => item));
     return (
       <div className={style.container}>
-        <Sprite sprite={Grass1} x={0} y={0}></Sprite>
-        <Sprite sprite={Water1} x={16} y={0}></Sprite>
-        <Sprite sprite={Water1} x={32} y={0}></Sprite>
+        {this.props.mapLayers.world.map((y, yIndex) =>
+          y.map((xy, xIndex) => (
+            <Sprite
+              key={`world${xIndex}${yIndex}`}
+              sprite={this.getSprite(xy)}
+              x={xIndex * 16}
+              y={yIndex * 16}
+            />
+          ))
+        )}
       </div>
-    )
+    );
   }
 }
 
 WorldPure.propTypes = {
-  mapLayers: PropTypes.array.isRequired
-}
-export default WorldPure
+  mapLayers: PropTypes.object.isRequired
+};
+export default WorldPure;
