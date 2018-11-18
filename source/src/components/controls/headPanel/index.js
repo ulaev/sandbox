@@ -5,7 +5,7 @@ const mapStateToProps = store => ({
     forecast: store.forecast,
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = () => ({
 });
 
 export default connect(
