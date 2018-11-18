@@ -1,4 +1,7 @@
 .container {
-    background-color: green;
+    background-color: lightgray;
+    position: relative;
+    width: 800px;
+    height: 600px;
   }
   
