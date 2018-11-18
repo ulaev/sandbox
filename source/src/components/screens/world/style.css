@@ -1,7 +1,12 @@
 .container {
-    background-color: lightgray;
-    position: relative;
-    width: 800px;
-    height: 600px;
-  }
-  
+  background-color: lightgray;
+  position: relative;
+  width: 800px;
+  height: 600px;
+  zoom: 300%;
+}
+.camera {
+  width: 800px;
+  height: 600px;
+  overflow: hidden;
+}
