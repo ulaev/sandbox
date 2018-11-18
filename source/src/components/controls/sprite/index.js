@@ -1,14 +1,21 @@
-import { connect } from 'react-redux';
-import SpritePure from './SpritePure';
+import React from 'react';
+import PropTypes from 'prop-types';
+import style from './style.css';
 
-const mapStateToProps = store => ({
-    forecast: store.forecast,
-});
+const Sprite = ({sprite, x, y}) => {
+    const styles = {
+        ...sprite, 
+        left:`${x}px`,
+        top:`${y}px`};
+    return (
+        <div className={style.sprite} style={styles}></div>
+    )
+}
 
-const mapDispatchToProps = dispatch => ({
-});
+Sprite.propTypes = {
+    sprite: PropTypes.object.isRequired,
+    x: PropTypes.number,
+    y: PropTypes.number
+}
 
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps,
-)(SpritePure);
+export default Sprite;

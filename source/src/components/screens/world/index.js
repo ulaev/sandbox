@@ -3,7 +3,7 @@ import { getForecast } from '../../../actions/YandexForecastActions';
 import WorldPure from './WorldPure';
 
 const mapStateToProps = store => ({
-    forecast: store.forecast,
+    mapLayers: store.mapLayers.mapLayers,
 });
 
 const mapDispatchToProps = dispatch => ({

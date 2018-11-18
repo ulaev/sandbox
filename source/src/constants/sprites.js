@@ -1,7 +1,17 @@
-export const Water1 = "background: url('../../../assets/img/roguelikeSheet_transparent.png') 0 0";
-export const Water2 = "background: url('../../../assets/img/roguelikeSheet_transparent.png') 16px 0";
-export const Coast1 = "background: url('../../../assets/img/roguelikeSheet_transparent.png') 32px 0";
-export const Coast2 = "background: url('../../../assets/img/roguelikeSheet_transparent.png') 48px 0";
-export const Coast3 = "background: url('../../../assets/img/roguelikeSheet_transparent.png') 64px 0";
-export const Grass1 = "background: url('../../../assets/img/roguelikeSheet_transparent.png') 80px 0";
-export const Land1 = "background: url('../../../assets/img/roguelikeSheet_transparent.png') 96px 0";
+import RoguelikeSheet from '../assets/img/roguelikeSheet_transparent.png';
+
+export const Water1 = { background: `url(/${RoguelikeSheet}) 0 0` };
+export const Water2 = { background: `url(/${RoguelikeSheet}) -17px 0` };
+export const Coast1 = { background: `url(/${RoguelikeSheet}) -34px 0` };
+export const Coast2 = { background: `url(/${RoguelikeSheet}) -51px 0` };
+export const Coast3 = { background: `url(/${RoguelikeSheet}) -68px 0` };
+export const Grass1 = { background: `url(/${RoguelikeSheet}) -85px 0` };
+export const Land1 = { background: `url(/${RoguelikeSheet}) -101px 0` };
+
+export const Water3 = { background: `url(/${RoguelikeSheet}) 0 -17px` };
+export const Water4 = { background: `url(/${RoguelikeSheet}) -17px -17px` };
+export const Coast4 = { background: `url(/${RoguelikeSheet}) -34px -17px` };
+export const Water5 = { background: `url(/${RoguelikeSheet}) -51px -17px` };
+export const Coast5 = { background: `url(/${RoguelikeSheet}) -68px -17px` };
+export const Grass2 = { background: `url(/${RoguelikeSheet}) -85px -17px` };
+export const Land2 = { background: `url(/${RoguelikeSheet}) -101px -17px` };

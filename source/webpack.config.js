@@ -16,6 +16,18 @@ module.exports = {
                 }
             },
             {
+                test: /\.(png|jpg|svg)$/,
+                use: {
+                    loader: 'url-loader',
+                    options: {
+                        limit: 4096,
+                        name: '[name].[ext]',
+                        outputPath: 'img/'
+                    }
+                }
+
+            },
+            {
                 test: /\.css$/,
                 use: [
                     {
@@ -24,11 +36,11 @@ module.exports = {
                     {
                         loader: 'css-loader',
                         options: {
-                            modules: true,
                             importLoaders: 1,
                             localIdentName: '[name]_[local]_[hash:base64]',
-                            sourceMap: true,
                             minimize: true,
+                            modules: true,
+                            sourceMap: true,
                         }
                     }
                 ]
