@@ -1,0 +1,7 @@
+.container {
+    background-color: lightgray;
+    position: absolute;
+    width: 800px;
+    height: 600px;
+    zoom: 300%;
+  }

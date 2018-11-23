@@ -8,7 +8,7 @@ const Sprite = ({sprite, x, y}) => {
         left:`${x}px`,
         top:`${y}px`};
     return (
-        <div className={style.sprite} style={styles}></div>
+        <div className={style.sprite} style={styles}/>
     )
 }
 

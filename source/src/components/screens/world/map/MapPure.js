@@ -17,6 +17,34 @@ import {
 } from "../../../../constants/sprites";
 
 class MapPure extends React.PureComponent {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      left: 0,
+      top: 0
+    };
+  }
+
+  cameraSpeed = 10;
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props.gameTickStamp != nextProps.gameTickStamp) {//Game Tick
+      if (this.props.buttons.up) {
+        this.state.top -= this.cameraSpeed;
+      }
+      if (this.props.buttons.down) {
+        this.state.top += this.cameraSpeed;
+      }
+      if (this.props.buttons.left) {
+        this.state.left -= this.cameraSpeed;
+      }
+      if (this.props.buttons.right) {
+        this.state.left += this.cameraSpeed;
+      }
+    }
+  }
+
   getSprite = id => {
     switch (id) {
       case 1:
@@ -43,12 +71,13 @@ class MapPure extends React.PureComponent {
   };
 
   render() {
+    const styleContainer = { left: this.state.left, top: this.state.top };
     return (
-      <div className={style.container}>
+      <div className={style.container} style={styleContainer}>
         {this.props.mapLayers.world.map((y, yIndex) =>
           y.map((xy, xIndex) => (
             <Sprite
-              key={`world${xIndex}${yIndex}`}
+              key={`world${ xIndex }_${ yIndex } `}
               sprite={this.getSprite(xy)}
               x={xIndex * 16}
               y={yIndex * 16}
@@ -61,7 +90,9 @@ class MapPure extends React.PureComponent {
 }
 
 MapPure.propTypes = {
-  mapLayers: PropTypes.object.isRequired
+  mapLayers: PropTypes.object.isRequired,
+  gameTickStamp: PropTypes.object.isRequired,
+  buttons: PropTypes.object.isRequired
 };
 
 export default MapPure;
