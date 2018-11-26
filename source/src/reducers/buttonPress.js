@@ -29,7 +29,7 @@ export default (state = initialState, action) => {
                 ...state,
                 buttons: { ...state.buttons, right: true },
             };
-        case "BUTTON_DOWN_UP":
+        case "BUTTON_UP_UP":
             return {
                 ...state,
                 buttons: { ...state.buttons, up: false },

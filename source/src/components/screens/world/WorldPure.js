@@ -7,21 +7,40 @@ class WorldPure extends React.PureComponent {
   componentDidMount() {
     this.gameLoopIndex = setInterval(() => {
       this.props.gameTick();
+
     }, 100);
+
+    // keyUp = (key) =>{
+    //   switch (key) {
+    //     case 37: !this.props.buttons.left ? this.props.buttonDown('LEFT') : null;
+    //       break;
+
+    //     case 38: !this.props.buttons.up ? this.props.buttonDown('UP'): null;
+    //       break;
+
+    //     case 39: !this.props.buttons.right ? this.props.buttonDown('RIGHT'): null;
+    //       break;
+
+    //     case 40: !this.props.buttons.down ? this.props.buttonDown('DOWN'): null;
+    //       break;
+
+    //     default: return;
+    //   }
+    // }
 
     document.onkeydown = (e) => {
       e = e || window.event;
       switch (e.which || e.keyCode) {
-        case 37: this.props.buttonDown('LEFT');
+        case 37: !this.props.buttons.left ? this.props.buttonDown('LEFT') : null;
           break;
 
-        case 38: this.props.buttonDown('UP');
+        case 38: !this.props.buttons.up ? this.props.buttonDown('UP'): null;
           break;
 
-        case 39: this.props.buttonDown('RIGHT');
+        case 39: !this.props.buttons.right ? this.props.buttonDown('RIGHT'): null;
           break;
 
-        case 40: this.props.buttonDown('DOWN');
+        case 40: !this.props.buttons.down ? this.props.buttonDown('DOWN'): null;
           break;
 
         default: return;
@@ -67,5 +86,6 @@ WorldPure.propTypes = {
   gameTick: PropTypes.func.isRequired,
   buttonUp: PropTypes.func.isRequired,
   buttonDown: PropTypes.func.isRequired,
+  buttons: PropTypes.object.isRequired
 };
 export default WorldPure;

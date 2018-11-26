@@ -1,11 +1,11 @@
 import { connect } from 'react-redux';
-import { gameTick } from '../../../actions/GameTickAction';
-import { buttonUp } from '../../../actions/ButtonUpAction';
 import { buttonDown } from '../../../actions/ButtonDownAction';
+import { buttonUp } from '../../../actions/ButtonUpAction';
+import { gameTick } from '../../../actions/GameTickAction';
 import WorldPure from './WorldPure';
 
 const mapStateToProps = store => ({
-    // mapLayers: store.mapLayers.mapLayers,
+    buttons: store.buttons.buttons
 });
 
 const mapDispatchToProps = dispatch => ({

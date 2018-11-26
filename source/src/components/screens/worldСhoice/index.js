@@ -1,5 +1,4 @@
 import { connect } from 'react-redux';
-import { getForecast } from '../../../actions/YandexForecastActions';
 import WorldСhoicePure from './WorldСhoicePure';
 
 const mapStateToProps = store => ({

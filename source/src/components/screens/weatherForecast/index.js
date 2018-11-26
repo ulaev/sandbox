@@ -1,5 +1,4 @@
 import { connect } from 'react-redux';
-import { getForecast } from '../../../actions/YandexForecastActions';
 import WeatherForecastPure from './WeatherForecastPure';
 
 const mapStateToProps = store => {
@@ -10,7 +9,6 @@ const mapStateToProps = store => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getForecast: params => dispatch(getForecast(params)),
   }
 }
 

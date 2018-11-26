@@ -16,7 +16,7 @@ import {
   Coast8
 } from "../../../../constants/sprites";
 
-class MapPure extends React.PureComponent {
+class MapPure extends React.Component {
 
   constructor(props) {
     super(props);
@@ -31,16 +31,16 @@ class MapPure extends React.PureComponent {
   componentWillReceiveProps(nextProps) {
     if (this.props.gameTickStamp != nextProps.gameTickStamp) {//Game Tick
       if (this.props.buttons.up) {
-        this.state.top -= this.cameraSpeed;
-      }
-      if (this.props.buttons.down) {
         this.state.top += this.cameraSpeed;
       }
+      if (this.props.buttons.down) {
+        this.state.top -= this.cameraSpeed;
+      }
       if (this.props.buttons.left) {
-        this.state.left -= this.cameraSpeed;
+        this.state.left += this.cameraSpeed;
       }
       if (this.props.buttons.right) {
-        this.state.left += this.cameraSpeed;
+        this.state.left -= this.cameraSpeed;
       }
     }
   }
