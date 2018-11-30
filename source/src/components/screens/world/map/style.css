@@ -3,6 +3,8 @@
     position: absolute;
     width: 800px;
     height: 600px;
-    zoom: 300%;
     background-color: black;
   }
+.zoom {
+  zoom: 300%;
+}

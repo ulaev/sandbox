@@ -2,49 +2,51 @@ import React from "react";
 import PropTypes from "prop-types";
 import style from "./style.css";
 
-class HeroPure extends React.Component {
+class NpcPure extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            left: 150,
-            top: 150
+            left: Math.floor((Math.random() * 500) + 1),
+            top: Math.floor((Math.random() * 300) + 1)
         };
     }
 
-    speed = 5;
+    speed = 2;
+    direction = 4;
 
     componentWillReceiveProps(nextProps) {
         if (this.props.gameTickStamp != nextProps.gameTickStamp) {//Game Tick
-            if (this.props.buttons.up) {
+
+            if (this.direction === 1) {
                 this.state.top -= this.speed;
             }
-            if (this.props.buttons.down) {
+            if (this.direction === 2) {
                 this.state.top += this.speed;
             }
-            if (this.props.buttons.left) {
+            if (this.direction === 3) {
                 this.state.left -= this.speed;
             }
-            if (this.props.buttons.right) {
+            if (this.direction === 4) {
                 this.state.left += this.speed;
             }
 
-            this.props.moveCamera({ left: 250 - (this.state.left), top: 100 - (this.state.top) });
+            if (Math.floor((Math.random() * 10) + 1) == 1) {
+                this.direction = Math.floor((Math.random() * 4) + 1);
+            }
         }
     }
 
     render() {
         const styleContainer = { left: this.state.left, top: this.state.top };
         return (
-            <div className={style.hero} style={styleContainer}></div>
+            <div className={style.npc} style={styleContainer}></div>
         );
     }
 }
 
-HeroPure.propTypes = {
+NpcPure.propTypes = {
     gameTickStamp: PropTypes.object.isRequired,
-    buttons: PropTypes.object.isRequired,
-    moveCamera: PropTypes.func.isRequired,
 };
 
-export default HeroPure;
+export default NpcPure;

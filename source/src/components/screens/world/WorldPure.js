@@ -2,7 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import style from "./style.css";
 import Map from "./map";
-
+import Hero from "./gameObjects/hero"
+import Npc from "./gameObjects/npc"
 class WorldPure extends React.PureComponent {
   componentDidMount() {
     this.gameLoopIndex = setInterval(() => {
@@ -34,13 +35,13 @@ class WorldPure extends React.PureComponent {
         case 37: !this.props.buttons.left ? this.props.buttonDown('LEFT') : null;
           break;
 
-        case 38: !this.props.buttons.up ? this.props.buttonDown('UP'): null;
+        case 38: !this.props.buttons.up ? this.props.buttonDown('UP') : null;
           break;
 
-        case 39: !this.props.buttons.right ? this.props.buttonDown('RIGHT'): null;
+        case 39: !this.props.buttons.right ? this.props.buttonDown('RIGHT') : null;
           break;
 
-        case 40: !this.props.buttons.down ? this.props.buttonDown('DOWN'): null;
+        case 40: !this.props.buttons.down ? this.props.buttonDown('DOWN') : null;
           break;
 
         default: return;
@@ -76,7 +77,20 @@ class WorldPure extends React.PureComponent {
   render() {
     return (
       <div className={style.camera}>
-        <Map />
+        <Map>
+          <div>
+            <Hero />
+            <Npc />
+            <Npc />
+            <Npc />
+            <Npc />
+            <Npc />
+            <Npc />
+            <Npc />
+            <Npc />
+            <Npc />
+          </div>
+        </Map>
       </div>
     );
   }

@@ -20,28 +20,30 @@ class MapPure extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      left: 0,
-      top: 0
-    };
+    // this.state = {
+    //   left: props.cameraPos.left,
+    //   top: props.cameraPos.top
+    // };
   }
 
   cameraSpeed = 10;
 
   componentWillReceiveProps(nextProps) {
     if (this.props.gameTickStamp != nextProps.gameTickStamp) {//Game Tick
-      if (this.props.buttons.up) {
-        this.state.top += this.cameraSpeed;
-      }
-      if (this.props.buttons.down) {
-        this.state.top -= this.cameraSpeed;
-      }
-      if (this.props.buttons.left) {
-        this.state.left += this.cameraSpeed;
-      }
-      if (this.props.buttons.right) {
-        this.state.left -= this.cameraSpeed;
-      }
+      // this.state.top = this.props
+      //   if (this.props.buttons.up) {
+      //     this.state.top += this.cameraSpeed;
+      //   }
+      //   if (this.props.buttons.down) {
+      //     this.state.top -= this.cameraSpeed;
+      //   }
+      //   if (this.props.buttons.left) {
+      //     this.state.left += this.cameraSpeed;
+      //   }
+      //   if (this.props.buttons.right) {
+      //     this.state.left -= this.cameraSpeed;
+      //   }
+      // }
     }
   }
 
@@ -71,19 +73,22 @@ class MapPure extends React.Component {
   };
 
   render() {
-    const styleContainer = { left: this.state.left, top: this.state.top };
+    const styleContainer = { left: this.props.cameraPos.left, top: this.props.cameraPos.top };
     return (
-      <div className={style.container} style={styleContainer}>
-        {this.props.mapLayers.world.map((y, yIndex) =>
-          y.map((xy, xIndex) => (
-            <Sprite
-              key={`world${ xIndex }_${ yIndex } `}
-              sprite={this.getSprite(xy)}
-              x={xIndex * 16}
-              y={yIndex * 16}
-            />
-          ))
-        )}
+      <div className={style.zoom}>
+        <div className={style.container} style={styleContainer}>
+          {this.props.mapLayers.world.map((y, yIndex) =>
+            y.map((xy, xIndex) => (
+              <Sprite
+                key={`world${xIndex}_${yIndex} `}
+                sprite={this.getSprite(xy)}
+                x={xIndex * 16}
+                y={yIndex * 16}
+              />
+            ))
+          )}
+          {this.props.children}
+        </div>
       </div>
     );
   }
@@ -92,7 +97,9 @@ class MapPure extends React.Component {
 MapPure.propTypes = {
   mapLayers: PropTypes.object.isRequired,
   gameTickStamp: PropTypes.object.isRequired,
-  buttons: PropTypes.object.isRequired
+  buttons: PropTypes.object.isRequired,
+  children: PropTypes.element.isRequired,
+  cameraPos: PropTypes.object.isRequired
 };
 
 export default MapPure;

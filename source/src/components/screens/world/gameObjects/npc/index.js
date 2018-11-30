@@ -1,11 +1,10 @@
 import { connect } from 'react-redux';
-import MapPure from './MapPure';
+import NpcPure from './NpcPure';
+// import SpriteHero from '../../../../../constants/spriteHero';
 
 const mapStateToProps = store => ({
-    mapLayers: store.mapLayers.mapLayers,
     gameTickStamp: store.gameTickStamp,
-    buttons: store.buttons.buttons,
-    cameraPos: store.cameraPos.cameraPos
+    buttons: store.buttons.buttons
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -14,4 +13,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
     mapStateToProps,
     mapDispatchToProps,
-)(MapPure);
+)(NpcPure);
