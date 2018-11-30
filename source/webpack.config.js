@@ -1,4 +1,5 @@
 const HtmlWebPackPlugin = require('html-webpack-plugin');
+const path = require('path');
 
 const htmlPlugin = new HtmlWebPackPlugin({
     template: './src/index.html',
@@ -6,6 +7,12 @@ const htmlPlugin = new HtmlWebPackPlugin({
 });
 
 module.exports = {
+    // resolve: {
+    //     alias: {
+    //         assets: path.resolve('./img')
+    //         // Templates: path.resolve(__dirname, 'src/templates/')
+    //     }
+    // },
     module: {
         rules: [
             {
