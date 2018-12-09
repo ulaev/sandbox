@@ -3,6 +3,8 @@
   "plugins": ["react", "css-modules"],
   "rules": {
     "strict": "off",
+    "sort-keys": "off",
+    "id-length": "off",
     "indent": ["error", 4],
     "semi": ["error", "always"],
     "no-console": 0,

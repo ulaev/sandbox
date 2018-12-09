@@ -8,3 +8,8 @@
 .zoom {
   zoom: 300%;
 }
+
+svg {
+  -webkit-clip-path: url(#svgPath2);
+  clip-path: url(#svgPath2);
+}

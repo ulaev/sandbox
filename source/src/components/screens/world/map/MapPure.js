@@ -16,8 +16,12 @@ import {
   Coast8
 } from "../../../../constants/sprites";
 
-class MapPure extends React.Component {
+import MAP_TILES from "../../../../constants/sprites2";
 
+// import RoguelikeSheet from "../../../../assets/img/roguelikeSheet_transparent.png";
+import RoguelikeSheet from "../../../../assets/img/roguelikeSheet_transparent.png";
+
+class MapPure extends React.Component {
   constructor(props) {
     super(props);
     // this.state = {
@@ -25,11 +29,60 @@ class MapPure extends React.Component {
     //   top: props.cameraPos.top
     // };
   }
-
+  componentDidMount(){
+    this.drawMap();
+  }
   cameraSpeed = 10;
 
+  drawMap() {
+    this.canvas = document.getElementById("map");
+    this.ctx = this.canvas.getContext("2d");
+    const spriteImage = new Image();
+    spriteImage.src = `/${RoguelikeSheet}`;
+    class Tile {
+      constructor(type, ctx) {
+        this.type = type;
+        this.ctx = ctx;
+      }
+
+      draw(x, y) {
+        this.ctx.drawImage(
+          spriteImage,
+          this.type.x,
+          this.type.y,
+          16,
+          16,
+          x,
+          y,
+          16,
+          16
+        );
+      }
+    }
+
+    this.props.mapLayers.world.map((y, yIndex) =>
+      y.map(
+        (xy, xIndex) => {
+          const tileId = xy;
+          const tileType = MAP_TILES[tileId];
+          new Tile(tileType, this.ctx).draw(xIndex * 16, yIndex * 16);
+        }
+        // (
+
+        //   <Sprite
+        //     key={`world${xIndex}_${yIndex} `}
+        //     sprite={this.getSprite(xy)}
+        //     x={xIndex * 16}
+        //     y={yIndex * 16}
+        //   />
+        // )
+      )
+    );
+  }
+
   componentWillReceiveProps(nextProps) {
-    if (this.props.gameTickStamp != nextProps.gameTickStamp) {//Game Tick
+    if (this.props.gameTickStamp != nextProps.gameTickStamp) {
+      //Game Tick
       // this.state.top = this.props
       //   if (this.props.buttons.up) {
       //     this.state.top += this.cameraSpeed;
@@ -73,11 +126,32 @@ class MapPure extends React.Component {
   };
 
   render() {
-    const styleContainer = { left: this.props.cameraPos.left, top: this.props.cameraPos.top };
+    const styleContainer = {
+      left: this.props.cameraPos.left,
+      top: this.props.cameraPos.top
+    };
     return (
       <div className={style.zoom}>
         <div className={style.container} style={styleContainer}>
-          {this.props.mapLayers.world.map((y, yIndex) =>
+          <canvas id="map" />
+          {/* <svg
+            width={this.props.mapLayers.world[0].length * 16}
+            height={this.props.mapLayers.world.length * 16}
+            xmlns="http://www.w3.org/2000/svg"
+            xlink="http://www.w3.org/1999/xlink"
+          >
+            <image
+              href={`/${RoguelikeSheet}`}
+              // transform="translate(17 0)"
+              // viewBox="0 0 16 16"
+            />
+            <defs>
+              <clipPath id="svgPath2">
+                <rect x="0" y="0" width="16" height="16" />
+              </clipPath>
+            </defs>
+          </svg> */}
+          {/* {this.props.mapLayers.world.map((y, yIndex) =>
             y.map((xy, xIndex) => (
               <Sprite
                 key={`world${xIndex}_${yIndex} `}
@@ -86,7 +160,7 @@ class MapPure extends React.Component {
                 y={yIndex * 16}
               />
             ))
-          )}
+          )} */}
           {this.props.children}
         </div>
       </div>
