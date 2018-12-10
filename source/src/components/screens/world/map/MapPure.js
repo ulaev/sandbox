@@ -29,7 +29,7 @@ class MapPure extends React.Component {
     //   top: props.cameraPos.top
     // };
   }
-  componentDidMount(){
+  componentDidMount() {
     this.drawMap();
   }
   cameraSpeed = 10;
@@ -39,6 +39,8 @@ class MapPure extends React.Component {
     this.ctx = this.canvas.getContext("2d");
     const spriteImage = new Image();
     spriteImage.src = `/${RoguelikeSheet}`;
+
+
     class Tile {
       constructor(type, ctx) {
         this.type = type;
@@ -60,24 +62,26 @@ class MapPure extends React.Component {
       }
     }
 
-    this.props.mapLayers.world.map((y, yIndex) =>
-      y.map(
-        (xy, xIndex) => {
-          const tileId = xy;
-          const tileType = MAP_TILES[tileId];
-          new Tile(tileType, this.ctx).draw(xIndex * 16, yIndex * 16);
-        }
-        // (
+    spriteImage.onload = () => {
+      this.props.mapLayers.world.map((y, yIndex) =>
+        y.map(
+          (xy, xIndex) => {
+            const tileId = xy;
+            const tileType = MAP_TILES[tileId];
+            new Tile(tileType, this.ctx).draw(xIndex * 16, yIndex * 16);
+          }
+          // (
 
-        //   <Sprite
-        //     key={`world${xIndex}_${yIndex} `}
-        //     sprite={this.getSprite(xy)}
-        //     x={xIndex * 16}
-        //     y={yIndex * 16}
-        //   />
-        // )
-      )
-    );
+          //   <Sprite
+          //     key={`world${xIndex}_${yIndex} `}
+          //     sprite={this.getSprite(xy)}
+          //     x={xIndex * 16}
+          //     y={yIndex * 16}
+          //   />
+          // )
+        )
+      );
+    }
   }
 
   componentWillReceiveProps(nextProps) {
@@ -133,7 +137,7 @@ class MapPure extends React.Component {
     return (
       <div className={style.zoom}>
         <div className={style.container} style={styleContainer}>
-          <canvas id="map" />
+          <canvas id="map" width={this.props.mapLayers.world[0].length * 16} height={this.props.mapLayers.world.length * 16}/>
           {/* <svg
             width={this.props.mapLayers.world[0].length * 16}
             height={this.props.mapLayers.world.length * 16}
