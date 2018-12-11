@@ -1,6 +1,6 @@
 class MoveGameObjectService {
     constructor(props) {
-        
+        const t = mapLayers
     }
 }
 
